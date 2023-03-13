@@ -1,0 +1,35 @@
+<p>hello works!</p>
+<h2>{{title}}</h2>
+<h2>{{1 + 1}}</h2> <!-- 使用表达式 -->
+<h2>{{true ? 1 + 1 : title}}</h2> <!-- 使用三元表达式 -->
+<h2>{{title | uppercase}}</h2> <!-- 使用管道 -->
+<h3>{{title | uppercase | lowercase}}</h3> <!-- 使用多个管道 -->
+<h3>{{currentDateTime}}</h3>
+<img [src]="logoUrl" alt="1" width="30"> <!-- 使用属性绑定 -->
+<img [ngSrc]="logoUrl" alt="2" width="30"> <!-- 使用属性绑定 与上面的效果一样 -->
+<button [class.active]="isActive" (click)="changeColor()">Click Me</button>
+<br>
+<button [style.color]="isActive ? 'red' : 'green'">Click Me</button> <!-- 使用三元表达式 -->
+<button [style.color]="isActive ? 'red' : 'green'" [style.font-size.px]="isActive ? 20 : 12">Click Me
+</button> <!-- 多个样式绑定 -->
+<button [ngStyle]="{color: isActive ? 'red' : 'green', 'font-size.px': isActive ? 20 : 12}">Click Me
+</button> <!-- 使用ngStyle指令 -->
+<button (click)="onClick()">Click Me</button>
+<input [(ngModel)]="title" id="d1"> <!-- 双向绑定 -->
+<input [ngModel]="title" id="d2"> <!-- 单向绑定 -->
+<input bindon-ngModel="title" id="d3"> <!-- 双向绑定 -->
+<h2 *ngIf="title">ngIf 指令</h2>
+<h2 *ngIf="!title; else elseBlock">ngIf 指令</h2>
+<ng-template #elseBlock>
+  <h2>ngIf Else 指令</h2>
+</ng-template>
+<h3 *ngIf="title; then thenBlock; else elseBlock"></h3>
+<ng-template #thenBlock>
+  <h2>ngIf Then 指令</h2>
+</ng-template>
+
+<ul>
+  <li *ngFor="let item of items let i = index let odd = odd let even = even">
+    {{i}} {{item}} {{odd}} {{even}}
+</ul>
+

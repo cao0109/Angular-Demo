@@ -1,0 +1,46 @@
+<p>profile-editor works!</p>
+<form [formGroup]="loginForm">
+  <label>
+    Username:
+    <input type="text" formControlName="username">
+  </label>
+  <label>
+    Password:
+    <input type="password" formControlName="password">
+  </label>
+  <button type="submit" (click)="submit()">Submit</button>
+</form>
+<hr>
+<!-- The login form 表单验证-->
+<form action="">
+  <label>
+    username:
+    <input type="text" name="username" [(ngModel)]="formData.name" #nameInp="ngModel" required>
+  </label>
+  <span *ngIf="nameInp.invalid && (nameInp.dirty || nameInp.touched)">username is required</span>
+  <label>
+    password:
+    <input type="password" name="password" [(ngModel)]="formData.password" #passInp="ngModel" required>
+  </label>
+  <span *ngIf="passInp.invalid && (passInp.dirty || passInp.touched)">password is required</span>
+  <button (click)="sub(nameInp)">sub</button>
+</form>
+
+<h3>自定义表单验证</h3>
+<form action="" [formGroup]="validateForm">
+  <label>
+    username:
+    <input type="text" name="username" required formControlName="username">
+  </label>
+    <p *ngIf="validateForm.get('username')?.errors?.['required']">username is required</p>
+  <label>
+    password:
+    <input type="password" name="password" required formControlName="password">
+  </label>
+  <label>
+    phone:
+    <input type="text" name="phone" required formControlName="phone">
+  </label>
+  <button (click)="sub2()">sub</button>
+</form>
+
