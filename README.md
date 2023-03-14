@@ -948,9 +948,105 @@ export class TestService {
 import {Component, OnInit} from '@angular/core';
 import {TestService} from '../test.service';
 
+@Component({
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.scss']
+})
+export class TestComponent implements OnInit {
+  //在构造函数中注入服务
+  constructor(private testService: TestService) {
+  }
 
+  ngOnInit() {
+  }
+}
 ```
 
+#### 7.4.2 异步注入
+
+在组件的ngOnInit中注入服务，这种方式叫异步注入，异步注入的服务是多例的。
+
+```ts
+import {Component, OnInit} from '@angular/core';
+import {TestService} from '../test.service';
+  
+@Component({
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.scss']
+})
+export class TestComponent implements OnInit {
+  constructor() {
+  }
+
+  ngOnInit() {
+    //在ngOnInit中注入服务
+    const testService = new TestService();
+  }
+}
+```
+
+### 7.5 服务的使用
+
+#### 7.5.1 同步注入的服务
+
+同步注入的服务是单例的，可以在组件的任何地方使用。
+
+```ts
+import {Component, OnInit} from '@angular/core';
+import {TestService} from '../test.service';
+
+@Component({
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.scss']
+})
+export class TestComponent implements OnInit {
+  constructor(private testService: TestService) {
+  }
+
+  ngOnInit() {
+    //在组件的任何地方使用
+    this.testService.test();
+  }
+}
+```
+
+#### 7.5.2 异步注入的服务
+
+异步注入的服务是多例的，只能在组件的ngOnInit中使用。
+
+```ts
+import {Component, OnInit} from '@angular/core';
+import {TestService} from '../test.service';
+
+@Component({
+  selector: 'app-test',
+  templateUrl: './test.component.html',
+  styleUrls: ['./test.component.scss']
+})
+export class TestComponent implements OnInit {
+  constructor() {
+  }
+
+  ngOnInit() {
+    //在ngOnInit中使用
+    const testService = new TestService();
+    testService.test();
+  }
+}
+```
+
+### 7.6 服务的生命周期
+
+- 同步注入的服务
+
+  同步注入的服务是单例的，整个应用只有一个实例，生命周期和应用一样长。
+
+- 异步注入的服务
+
+  异步注入的服务是多例的，每次使用都会创建一个新的实例，生命周期和组件一样长。
 
 
 

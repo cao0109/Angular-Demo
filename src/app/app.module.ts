@@ -7,10 +7,11 @@ import {HelloComponent} from './hello/hello.component';
 import {NgOptimizedImage} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NameEditorComponent} from './name-editor/name-editor.component';
-import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
-import { MyPipePipe } from './my-pipe.pipe';
-import { ParentComponent } from './parent/parent.component';
-import { ChildComponent } from './child/child.component';
+import {ProfileEditorComponent} from './profile-editor/profile-editor.component';
+import {MyPipePipe} from './my-pipe.pipe';
+import {ParentComponent} from './parent/parent.component';
+import {ChildComponent} from './child/child.component';
+import {ListService} from "./service/list.service";
 
 @NgModule({
   // 声明组件: 用于声明当前项目运行的组件
@@ -32,7 +33,7 @@ import { ChildComponent } from './child/child.component';
     ReactiveFormsModule
   ],
   // 服务提供商: 用于创建服务
-  providers: [],
+  providers: [ListService],
   // 启动组件: 用于指定应用的主视图 (称为根组件) 通过引导根 AppModule 来启动应用
   bootstrap: [AppComponent]
 })
