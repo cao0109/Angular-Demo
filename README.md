@@ -205,6 +205,7 @@ export class ChildComponent {
 - 子组件向父组件传递数据
 
 ```html
+
 <app-child (nameChange)="onNameChange($event)"></app-child>
 ```
 
@@ -236,7 +237,31 @@ export class ChildComponent {
 
 - 父组件与子组件通信
 
+  ```html
+  <app-child #myChild></app-child>
+  <button (click)="child.changeName('new name')">Change Name</button>
+  ```
 
+  ```ts
+  import {ViewChild} from '@angular/core';
+  
+  @Component({
+    selector: 'app-child',
+    template: `
+      <p>child: {{name}}</p>
+    `
+  })
+  export class ChildComponent {
+    // noinspection JSAnnotator
+    @ViewChild('myChild') child: ChildComponent;
+  
+    name = 'child';
+  
+    changeName(name: string) {
+      this.name = name;
+    }
+  }
+  ```
 
 ## 6. Angular模板
 

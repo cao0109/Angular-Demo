@@ -1,0 +1,6 @@
+<!-- 父传子 -->
+<!--<app-child [name]="'tina'"></app-child>-->
+<p *ngFor="let item of list">{{item}}</p>
+<app-child (addList)="addListFun($event)" #myChild></app-child>
+<button (click)="addFunc()">调用子组件</button>
+

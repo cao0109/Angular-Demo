@@ -9,6 +9,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NameEditorComponent} from './name-editor/name-editor.component';
 import { ProfileEditorComponent } from './profile-editor/profile-editor.component';
 import { MyPipePipe } from './my-pipe.pipe';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
 
 @NgModule({
   // 声明组件: 用于声明当前项目运行的组件
@@ -17,7 +19,9 @@ import { MyPipePipe } from './my-pipe.pipe';
     HelloComponent,
     NameEditorComponent,
     ProfileEditorComponent,
-    MyPipePipe
+    MyPipePipe,
+    ParentComponent,
+    ChildComponent
   ],
   // 导入模块: 用于导入其它模块中的组件、指令、管道
   imports: [
